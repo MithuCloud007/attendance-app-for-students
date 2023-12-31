@@ -1,0 +1,101 @@
+{% extends 'department/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Content-->
+<div class="container-fluid">
+    <div class="row">
+       <div class="col-12">
+          <div class="page-title-box">
+             <!-- <h4 class="page-title">Datatable</h4>
+             <div class="page-title-right">
+                <ol class="breadcrumb p-0 m-0">
+                   <li class="breadcrumb-item"><a href="#">Moltran</a></li>
+                   <li class="breadcrumb-item"><a href="#">table</a></li>
+                   <li class="breadcrumb-item active">Datatable</li>
+                </ol>
+             </div> -->
+             <div class="clearfix"></div>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-lg-12">
+          <div class="card">
+             <div class="card-header">
+                <div class="row">
+                   <div class="col-md-8 card_header_title">
+                      <i class="fab fa-gg-circle"></i>
+                      View Attendance Information
+                   </div>
+                   <div class="col-md-4 text-right card_header_btn">
+                      <a class="btn btn-sm btn-secondary" href="{% url 'attendance:attendance_all' %}">
+                      <i class="fa fa-plus-circle"></i>
+                      All Attendance
+                      </a>
+                   </div>
+                </div>
+                <div class="clr"></div>
+             </div>
+             <div class="card-body">
+                <div class="row">
+                   <div class="col-md-2 col-sm-2 col-2"></div>
+                   <div class="col-md-8 col-sm-8 col-8">
+                      <table class="table table-bordered table-striped custom_view_table">
+                         <tr>
+                            <td>Student Id</td>
+                            <td>:</td>
+                            <td>{{att.student_id.student_id}}</td>
+                         </tr>
+                         <tr>
+                            <td>Student Name</td>
+                            <td>:</td>
+                            <td>{{att.student_id.first_name}} {{att.student_id.last_name}}</td>
+                         </tr>
+                         <tr>
+                            <td>Department</td>
+                            <td>:</td>
+                            <td>{{att.student_id.department_name}}</td>
+                         </tr>
+                         <tr>
+                            <td>Class Name</td>
+                            <td>:</td>
+                            <td>
+                              {{att.student_id.class_id.class_name}}
+                            </td>
+                         <tr>
+                            <td>Mentor Name</td>
+                            <td>:</td>
+                            <td>{{att.student_id.mentor_name}}</td>
+                         </tr>
+                         <tr>
+                            <td>Status</td>
+                            <td>:</td>
+                            <td>
+                              {{att.status}}
+                            </td>                         
+                         </tr>
+                         <tr>
+                           <td>Date</td>
+                           <td>:</td>
+                           <td>
+                             {{att.attendance_date}}
+                           </td> 
+                         </tr>
+                      </table>
+                   </div>
+                   <div class="col-md-2 col-sm-2 col-2"></div>
+                </div>
+             </div>
+             <div class="card-footer">
+                <!-- <div class="btn-group">
+                   <button type="button" class="btn btn-purple waves-effect">PRINT</button>
+                   <button type="button" class="btn btn-dark waves-effect">PDF</button>
+                   <button type="button" class="btn btn-pink waves-effect">EXEL</button>
+                   <button type="button" class="btn btn-success waves-effect">CSV</button>
+                </div> -->
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+{% endblock content %}

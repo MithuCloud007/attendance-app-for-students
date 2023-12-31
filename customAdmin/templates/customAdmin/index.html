@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+   {% load static %}
+   <head>
+      <meta charset="utf-8" />
+      <title>{% block title %} {%endblock title%}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta content="Responsive bootstrap 4 admin template" name="description" />
+      <meta content="Coderthemes" name="author" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico'%}">
+      <link href="{% static 'assets/libs/sweetalert2/sweetalert2.min.css'%}" rel="stylesheet" type="text/css" />
+      <link href="{% static 'assets/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+      <link href="{% static 'assets/css/icons.min.css'%}" rel="stylesheet" type="text/css" />
+      <link href="{% static 'assets/css/app.min.css'%}" rel="stylesheet" type="text/css" id="app-stylesheet" />
+      <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+   </head>
+   <body>
+      <!-- Begin page -->
+      <div id="wrapper">
+         <!-- Topbar Start -->
+         <div class="navbar-custom navbar-custom" style="background-color: darkgray">
+            <!-- <div class="logo-box">
+               <a href="index.html" class="logo text-center logo-dark">
+                  <span class="logo-lg">
+                      <img src="{% static 'assets/images/logo-dark.png'%}" alt="" height="16">
+                      <span class="logo-lg-text-dark">Moltran</span>
+                  </span>
+                  <span class="logo-sm">
+                      <span class="logo-lg-text-dark">M</span>
+                      <img src="{% static 'assets/images/logo-sm.png'%}" alt="" height="25">
+                  </span>
+                  </a>
+                  
+                  <a href="index.html" class="logo text-center logo-light">
+                  <span class="logo-lg">
+                      <img src="{% static 'assets/images/logo-light.png'%}" alt="" height="16">
+                      <span class="logo-lg-text-dark">Moltran</span>
+                  </span>
+                  <span class="logo-sm">
+                      <span class="logo-lg-text-dark">M</span>
+                      <img src="{% static 'assets/images/logo-sm.png'%}" alt="" height="25">
+                  </span>
+                  </a>
+            </div>  
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+               <li>
+                  <button class="button-menu-mobile waves-effect waves-light">
+                     <i class="mdi mdi-menu"></i>
+                     </button>
+               </li>
+               <li class="d-none d-sm-block">
+                  <form class="app-search">
+                     <div class="app-search-box">
+                         <div class="input-group">
+                             <input type="text" class="form-control" placeholder="Search..." style="background-color: aliceblue;color: #000;">
+                             <div class="input-group-append">
+                                 <button class="btn" type="submit"  style="background-color: rgb(141, 168, 192);">
+                                     <i class="fas fa-search"></i>
+                                 </button>
+                             </div>
+                         </div>
+                     </div>
+                     </form>
+               </li>
+            </ul> -->
+         </div>
+         <!-- end Topbar -->
+         <!-- ========== Left Sidebar Start ========== -->
+         <div class="left-side-menu">
+            <div class="slimscroll-menu">
+               <!--- Sidemenu -->
+               <div id="sidebar-menu">
+                  <div class="user-box">
+                     <div class="float-left">
+                         <img src="{% static 'assets/images/users/avatar-1.jpg'%}" alt="" class="avatar-md rounded-circle">
+                     </div>
+                     <div class="user-info">
+                        <div class="dropdown">
+                           {% if user.is_authenticated %}
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 {{user.first_name}} {{user.last_name}}
+                                                     <i class="mdi mdi-chevron-down"></i>
+                                             </a>
+                           {% endif %}               
+                              <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                 <li><a href="javascript:void(0)" class="dropdown-item"><i class="mdi mdi-face-profile mr-2"></i> Profile<div class="ripple-wrapper"></div></a></li>
+                                 <li><a href="javascript:void(0)" class="dropdown-item"><i class="mdi mdi-power-settings mr-2"></i> Logout</a></li>
+                              </ul>    
+                        </div>
+                           {% if user.is_authenticated %}
+                           <p class="font-13 text-muted m-0">{{user.username}}</p>
+                           {% endif %}
+                     </div>
+                  </div>
+                  
+                  <ul class="metismenu" id="side-menu">
+                     <li>
+                        <a href="{% url 'customAdmin:backend_dashboard' %}" class="waves-effect">
+                        <i class="mdi mdi-home"></i>
+                        <span> Dashboard </span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="{% url 'department:department_all' %}" class="waves-effect">
+                        <i class="fas fa-user-alt"></i>
+                        <span> Department </span>
+                        <!-- <span class="menu-arrow"></span> -->
+                        </a>
+                        <!-- <ul class="nav-second-level" aria-expanded="false">
+                           <li><a href="components-grid.html">DepartmentCreate</a></li>
+                           <li><a href="components-portlets.html">DepartmentList</a></li>
+                           <li><a href="components-widgets.html">DepartmentUpdate</a></li>
+                           <li><a href="components-nestable-list.html">DepartmentDelete</a></li>
+                       </ul> -->
+                     </li>
+                     <!-- <li>
+                        <a href="{% url 'student:student_all' %}" class="waves-effect">
+                        <i class=" fab fa-wpressr"></i>
+                        <span> Course  </span>
+                        <span class="menu-arrow"></span>
+                       </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                           <li><a href="components-grid.html">CourseCreate</a></li>
+                           <li><a href="components-portlets.html">CourseList</a></li>
+                           <li><a href="components-widgets.html">CourseUpdate</a></li>
+                           <li><a href="components-nestable-list.html">CourseDelete</a></li>
+                        </ul>
+                     </li> -->
+                     <li>
+                        <a href="{% url 'student:student_all' %}" class="waves-effect">
+                        <i class=" fab fa-affiliatetheme"></i>
+                        <span> Student  </span>
+                        <!-- <span class="menu-arrow"></span> -->
+                        </a>
+                        <!-- <ul class="nav-second-level" aria-expanded="false">
+                           <li><a href="components-grid.html">DepartmentCreate</a></li>
+                           <li><a href="components-portlets.html">DepartmentList</a></li>
+                           <li><a href="components-widgets.html">DepartmentUpdate</a></li>
+                           <li><a href="components-nestable-list.html">DepartmentDelete</a></li>
+                        </ul>                   -->
+                     </li>
+                     <li>
+                           <a href="{% url 'class:class_all' %}" class="waves-effect">
+                           <i class="fas fa-box-open"></i>
+                           <span> Class  </span>
+                           <!-- <span class="menu-arrow"></span> -->
+                           </a>
+                           <!-- <ul class="nav-second-level" aria-expanded="false">
+                              <li><a href="components-grid.html">ClassCreate</a></li>
+                              <li><a href="components-portlets.html">ClassList</a></li>
+                              <li><a href="components-widgets.html">ClassUpdate</a></li>
+                              <li><a href="components-nestable-list.html">ClassDelete</a></li>
+                           </ul> -->
+                     </li>
+                     <li>
+                        <a href="{% url 'attendance:attendance_all' %}" class="waves-effect">
+                        <i class=" fab fa-bandcamp"></i>
+                        <span> Attendance  </span>
+                        <!-- <span class="menu-arrow"></span> -->
+                        </a>
+                        <!-- <ul class="nav-second-level" aria-expanded="false">
+                           <li><a href="components-grid.html">AttendanceCreate</a></li>
+                           <li><a href="components-portlets.html">AttendanceList</a></li>
+                           <li><a href="components-widgets.html">AttendanceUpdate</a></li>
+                           <li><a href="components-nestable-list.html">AttendanceDelete</a></li>
+                        </ul> -->
+                     </li>
+                     <li>
+                        <a href="{% url 'customAdmin:logout_page' %}" class="waves-effect">
+                        <i class=" fab fa-bandcamp"></i>
+                        <span> LogOut  </span>
+                        </a>
+                     </li>
+                  </ul>
+
+               </div>
+               <!-- End Sidebar -->
+               <div class="clearfix"></div>
+            </div>
+            <!-- Sidebar -left -->
+         </div>
+         <!-- Left Sidebar End -->
+         <!-- ============================================================== -->
+         <!-- Start Page Content here -->
+         <!-- ============================================================== -->
+         <div class="content-page">
+            <div class="content">
+               <!-- Start Content-->
+               <div class="container-fluid">
+                  <!-- start page title -->
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="page-title-box">
+                           <!-- <h4 class="page-title"> </h4>
+                           <div class="page-title-right">
+                              <ol class="breadcrumb p-0 m-0">
+                                 <li class="breadcrumb-item"><a href="#"></a></li>
+                                 <li class="breadcrumb-item active"></li>
+                              </ol>
+                           </div> -->
+                           <div class="clearfix"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- end page title -->
+                  <!--Widget-4 -->
+                  <div class="row">
+                     <div class="col-md-6 col-xl-3">
+                        <div class="card-box">
+                           <div class="media">
+                              <div class="avatar-md bg-secondary rounded-circle mr-2">
+                                 <i class="fas fa-user-alt avatar-title font-26 text-white"></i>
+                              </div>
+                              <div class="media-body align-self-center">
+                                 <div class="text-right">
+                                    <h4 class="font-20 my-0 font-weight-bold"><span data-plugin="counterup">10</span></h4>
+                                    <p class="mb-0 mt-1 text-truncate">Students</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- <div class="mt-4">
+                              <h6 class="text-uppercase">Target <span class="float-right">60%</span></h6>
+                              <div class="progress progress-sm m-0">
+                                 <div class="progress-bar bg-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <span class="sr-only">60% Complete</span>
+                                 </div>
+                              </div>
+                           </div> -->
+                        </div>
+                        <!-- end card-box-->
+                     </div>
+                     <div class="col-md-6 col-xl-3">
+                        <div class="card-box">
+                           <div class="media">
+                              <div class="avatar-md bg-secondary rounded-circle">
+                                 <i class=" fab fa-affiliatetheme avatar-title font-26 text-white"></i>
+                              </div>
+                              <div class="media-body align-self-center">
+                                 <div class="text-right">
+                                    <h4 class="font-20 my-0 font-weight-bold"><span data-plugin="counterup">10</span></h4>
+                                    <p class="mb-0 mt-1 text-truncate">Classes</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- <div class="mt-4">
+                              <h6 class="text-uppercase">Target <span class="float-right">90%</span></h6>
+                              <div class="progress progress-sm m-0">
+                                 <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                    <span class="sr-only">90% Complete</span>
+                                 </div>
+                              </div>
+                           </div> -->
+                        </div>
+                        <!-- end card-box-->
+                     </div>
+                     <div class="col-md-6 col-xl-3">
+                        <div class="card-box">
+                           <div class="media">
+                              <div class="avatar-md bg-secondary rounded-circle">
+                                 <i class="fab fa-bandcamp avatar-title font-26 text-white"></i>
+                              </div>
+                              <div class="media-body align-self-center">
+                                 <div class="text-right">
+                                    <h4 class="font-20 my-0 font-weight-bold"><span data-plugin="counterup">10</span></h4>
+                                    <p class="mb-0 mt-1 text-truncate">Department</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- <div class="mt-4">
+                              <h6 class="text-uppercase">Target <span class="float-right">57%</span></h6>
+                              <div class="progress progress-sm m-0">
+                                 <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
+                                    <span class="sr-only">57% Complete</span>
+                                 </div>
+                              </div>
+                           </div> -->
+                        </div>
+                        <!-- end card-box-->
+                     </div>
+                     <div class="col-md-6 col-xl-3">
+                        <div class="card-box">
+                           <div class="media">
+                              <div class="avatar-md bg-secondary rounded-circle">
+                                 <i class="ion-md-eye avatar-title font-26 text-white"></i>
+                              </div>
+                              <div class="media-body align-self-center">
+                                 <div class="text-right">
+                                    <h4 class="font-20 my-0 font-weight-bold"><span data-plugin="counterup">4</span></h4>
+                                    <p class="mb-0 mt-1 text-truncate">Teachers</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- <div class="mt-4">
+                              <h6 class="text-uppercase">Target <span class="float-right">60%</span></h6>
+                              <div class="progress progress-sm m-0">
+                                 <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <span class="sr-only">60% Complete</span>
+                                 </div>
+                              </div>
+                           </div> -->
+                        </div>
+                        <!-- end card-box-->
+                     </div>
+                  </div>
+                  <!-- end row -->
+               </div>
+               <!-- end container-fluid -->
+               <div>
+                  {% block content %}
+                  {%endblock content%}
+               </div>
+            </div>
+            <!-- end content -->
+            <!-- Footer Start -->
+            <footer class="footer">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-md-12">
+                        2016 - 2020 &copy; theme by <a href="#">Mithu</a>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+            <!-- end Footer -->
+         </div>
+         <!-- ============================================================== -->
+         <!-- End Page content -->
+         <!-- ============================================================== -->
+      </div>
+      <!-- END wrapper -->
+      <!-- Vendor js -->
+      <script src="{% static 'assets/js/vendor.min.js'%}"></script>
+      <script src="{% static 'assets/libs/moment/moment.min.js'%}"></script>
+      <script src="{% static 'assets/libs/jquery-scrollto/jquery.scrollTo.min.js'%}"></script>
+      <script src="{% static 'assets/libs/sweetalert2/sweetalert2.min.js'%}"></script>
+      <!-- Chat app -->
+      <script src="{% static 'assets/js/pages/jquery.chat.js'%}"></script>
+      <!-- Todo app -->
+      <script src="{% static 'assets/js/pages/jquery.todo.js'%}"></script>
+      <!-- flot chart -->
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.js'%}"></script>
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.time.js'%}"></script>
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.tooltip.min.js'%}"></script>
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.resize.js'%}"></script>
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.pie.js'%}"></script>
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.selection.js'%}"></script>
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.stack.js'%}"></script>
+      <script src="{% static 'assets/libs/flot-charts/jquery.flot.crosshair.js'%}"></script>
+      <!-- Dashboard init JS -->
+      <script src="{% static 'assets/js/pages/dashboard.init.js'%}"></script>
+      <!-- App js -->
+      <script src="{% static 'assets/js/app.min.js'%}"></script>
+   </body>
+   <!-- Mirrored from coderthemes.com/moltran/layouts/blue-vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Feb 2021 12:04:25 GMT -->
+</html>
